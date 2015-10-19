@@ -1,0 +1,1497 @@
+@import "setup";
+
+@import "_stars.scss";
+
+@import "_flickity.scss";
+
+@import "_hovers.scss";
+
+@mixin fontSize($number){
+	font-size: $number * 1px;
+	font-size: ($number / 10) * 1rem;
+}
+
+@mixin button($background){
+	background: $background;
+	color: white;
+	text-transform: uppercase;
+	padding: 1%;
+	border-radius: 2px;
+	border: 0;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.27);
+}
+
+$blue: #26C7DE;
+
+// GENERAL STYLES
+
+html {
+	font-size: 62.5%
+}
+
+body {
+	@include fontSize(16);
+	font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+	@include fontSize (48);
+}
+
+li {
+	list-style: none;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	max-width: 1120px;
+	margin: 0 auto;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+// HEADER STYLES
+ul.mainNav {
+		position: fixed;
+		z-index:9999;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: rgba(255,255,255,0.85);
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		display: none;
+	}
+
+ul.mainNav li {
+	padding: 25px;
+	flex: 1 0 auto;
+}
+
+ul.mainNav li a {
+	color: $blue;
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+.flexplicit {
+	display: flex !important;
+}	
+
+nav {
+	background: url(assets/pattern.png);
+}
+
+nav.one {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start; 
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+}
+
+nav.two {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end; 
+	padding-top: 63px;
+}
+
+@media all and (max-width: 480px) {
+	nav.two {
+	display: none;
+		}
+	}
+
+nav.two ul {
+	display: flex;
+	margin-bottom: 0.5%;
+	padding-right: 4%;
+	li {
+	padding-left: 10%;
+	text-transform: uppercase;
+	}
+}
+
+@-moz-document url-prefix() { 
+ 	nav.two ul {
+	margin: 7%;
+	padding: 0;
+	li {
+	padding: 4%;
+	}
+}
+}
+
+.search {
+	margin-right: 3%;
+	margin-top: 1%;
+	color: white;
+	&:hover {
+        color:red;
+        transition: color 0.5s;
+		}
+}
+
+.fab {
+	margin-left: 3%;
+	display: flex;
+	padding-top: 2%;
+		.fa {
+		padding-right:20px;
+		color: white;
+		&:hover {
+        color:red;
+        transition: color 0.5s;
+		}
+}
+}
+
+header h1, p, li {
+	color: white;
+}
+
+h1 {
+	font-weight: 100;
+	text-transform: uppercase;
+	&:after {
+		content: " ";
+   	 	display: block;
+ 		background: white;
+        height: 1px;
+  	    width: 45%;
+        margin-top: 8px;
+}
+}
+
+.flick {
+	margin-bottom: 2vh;
+	position: relative;
+}
+
+.promo {
+	width: 40%;
+	position: absolute;
+	top: 25%;
+	left: 52%;
+}
+
+@media all and (max-width: 940px) {
+	.promo {
+	width: 30%;
+	top: 15%;
+	left: 65%;
+		}
+	}	
+
+@media all and (max-width: 767px) {
+	.promo {
+	width: 25%;
+	top: 25%;
+	left: 72%;
+	line-height: 1.3;
+	h1 {
+	font-size: 2.8rem;	
+	font-weight: 400;	
+		}
+	}
+	}
+
+@media all and (max-width: 480px) {
+	.promo {
+	top: 7%;
+	left: 6%;	
+	}
+	.promo p {
+	display: none;	
+	}
+	}				
+
+button.buy {
+  @include button(red);
+  padding: 2%;
+  width: 30%;
+}
+
+@media all and (max-width: 767px) {
+	button.buy {
+	padding: 3%;
+	width: 40%;
+		}
+	}	
+
+@media all and (max-width: 480px) {
+	button.buy {
+	width: 70%;
+	margin-left: 4%;
+	}
+	}
+
+@media all and (max-width: 320px) {
+	button.buy {
+	width: 90%;
+		}
+	}			
+
+button.view {
+	@include button(white);
+	color: $blue;
+	padding: 2%;
+  	width: 35%;
+  	margin-left: 7%;
+  	a {
+  	color: $blue;	
+  	}
+}
+
+@media all and (max-width: 767px) {
+	button.view {
+	padding: 3%;
+	width: 40%;
+		}
+	}
+
+@media all and (max-width: 480px) {
+	button.view {
+	width: 70%;
+	margin: 4%;
+	}
+	}
+
+@media all and (max-width: 320px) {
+	button.view {
+	width: 90%;
+		}
+	}		
+
+h2 {
+	text-transform: uppercase;
+	font-weight: 100;
+	text-align: center;
+	width: 100%;
+}
+
+h2::after {
+   content: " ";
+   display: block;
+   background: $blue;
+   height: 2px;
+   width: 9%;
+   margin: 0 auto;
+   margin-top: 8px;
+}
+// FIRST BANNER SECTION
+
+.deals {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+@media all and (max-width: 480px) {
+	.deals {
+	flex-direction: column;
+	align-items: center;
+		}
+	}			
+
+.bannerOne {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	position: relative;
+	width: 31.5%;
+	p {	
+		position: absolute;
+		top: -10%;
+		left: 67%;
+		text-transform: uppercase;
+		font-size: 5rem;
+		font-weight: 900;
+	span {
+		font-weight: 100;
+		font-size: 5.5rem;
+		}
+	}
+}
+
+@media all and (max-width: 940px) {
+	.bannerOne p {
+	font-size: 3.5rem;
+	top: 0;
+	span {
+	font-size: 3.5rem;	
+		}
+	}
+	}
+
+@media all and (max-width: 767px) {
+	.bannerOne p {
+	font-size: 3rem;
+	left: 68%;
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.bannerOne {
+	width: 70%;
+	margin: 2%;
+	}
+	}
+
+@media all and (max-width: 320px) {
+	.bannerOne {
+	width: 95%;
+		}
+	}					
+
+.bannerTwo {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	position: relative;
+	width: 31.5%;
+	p {	
+		position: absolute;
+		text-transform: uppercase;
+		font-size: 4rem;
+		font-weight: 900;
+		color: #F37E15;
+		left: 50%;
+		top: 10%;
+
+	span {
+		font-weight: 100;
+		font-size: 6rem;
+	}
+	}
+	}
+
+@media all and (max-width: 940px) {
+	.bannerTwo p {
+	font-size: 3rem;
+	span {
+	font-size: 3rem;	
+		}
+	}
+	}
+
+@media all and (max-width: 767px) {
+	.bannerTwo p {
+	font-size: 2.5rem;
+	left: 50%;
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.bannerTwo {
+	width: 70%;
+	margin: 2%;
+	}
+	}
+
+@media all and (max-width: 320px) {
+	.bannerTwo {
+	width: 95%;
+		}
+	}										
+
+.bannerThree {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	position: relative;
+	width: 31.5%;
+	p {	
+		position: absolute;
+		left: 5%;
+		text-transform: uppercase;
+		font-size: 4rem;
+		font-weight: 900;
+		color: #458D81;
+		line-height: 0.75;
+	}
+	}	
+
+@media all and (max-width: 940px) {
+	.bannerThree p {
+	font-size: 3rem;
+	top: 5%;
+	span {
+	font-size: 2rem;	
+		}
+	}
+	}
+
+@media all and (max-width: 767px) {
+	.bannerThree p {
+	font-size: 2.5rem;
+	top: 20%;
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.bannerThree {
+	width: 70%;
+	margin: 2%;
+	}
+	}
+
+@media all and (max-width: 320px) {
+	.bannerThree {
+	width: 95%;
+		}
+	}							
+
+.bannerOne img {
+	width: 100%;
+}	
+
+.bannerTwo img {
+	width: 100%;
+}	
+
+.bannerThree img {
+	width: 100%;
+}	
+
+span.spanone {
+	font-weight: 100;
+	font-size: 4.9rem;
+	color: white;
+	display: block;
+	}
+
+span.spantwo {
+	color: #458D81;
+	font-size: 1.7rem;
+	font-weight: 400;
+	line-height: 0.5;
+
+}
+
+span.spanthree {
+	font-size: 1.7rem;
+	line-height: 0.5;
+}
+
+@media all and (max-width: 767px) {
+	span.spanthree {
+	color: white;
+		}
+	}	
+
+span.spanfour {
+	color: white;
+	font-size: 3.5rem;
+	display: block;
+}
+
+// PRODUCTS SECTION		
+
+.gallery {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.products {
+	color: white;
+	flex: 1 0 auto;
+	margin: 5px;
+	width: calc(25% - 10px);
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	position: relative;
+		span {
+	text-transform: uppercase;
+	font-size: 1rem;
+	padding: 4px;
+	margin-left: 4px;
+}
+}
+
+@media all and (max-width: 767px) {
+	.products {
+		margin: 15px;
+	width: calc(50% - 30px);	
+		}
+	}	
+
+.names {
+	bottom: 13%;
+	align-self: flex-start; 
+	position: absolute;
+	background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.9));
+	width: 100%; 
+	p {
+	margin-bottom: 0;
+	padding-left: 3%;
+}
+}
+
+@media all and (max-width: 767px) {
+	.names {
+	bottom: 11%;	
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.names {
+	bottom: 15%;	
+		}
+	}	
+
+.bottom {
+	background: white;
+	color: darkgrey;
+	width: 100%;
+	box-shadow: 0 1px 5px #888888;
+	display: flex;
+	justify-content: space-between; 
+	padding: 3%;
+}
+
+@-moz-document url-prefix() { 
+  .bottom {
+     padding: 0;
+  }
+}		
+
+// BATHING SUIT AND FLATS BANNER
+
+.galleryImg, .galleryImg2 {
+	width: 100%;
+}
+
+.banner {
+	margin: 3vh 0;
+	display: flex;
+	flex-direction: row; 
+	flex-wrap: nowrap; 
+}
+
+@media all and (max-width: 480px) {
+	.banner {
+	flex-direction: column;
+		}
+	}	
+
+.hatShoes, .hatShoes2 {
+	flex: 1 0 50%;
+	position: relative;
+	img {
+		width: 100%;
+	}
+}
+
+.hatShoes button {
+	@include button(red);
+	padding: 7%;
+	text-align: center;
+}
+
+@media all and (max-width: 767px) {
+	.hatShoes button {
+	padding: 3%;
+	margin-left: 2%;	
+		}
+	}
+
+.content {
+	position: absolute;
+	top: 30%;
+	right: 10%;
+	p {
+	color: #276765;
+	text-transform: uppercase;
+	font-size: 2.5rem;
+	line-height: 1px;
+	}
+	.blue {
+	font-weight: 700;
+	font-size: 2.25rem;
+	}
+	span {
+	line-height: 1px;
+	color: white;
+	}
+}
+
+@media all and (max-width: 940px) {
+	.content {
+	top: 10%;
+	right: 5%;
+		}
+	}
+
+@media all and (max-width: 767px) {
+	.content {
+	right: 1%;
+	p {
+		font-size: 2rem;
+		}
+	}
+	}
+
+@media all and (max-width: 480px) {
+	.content {
+	top: 22%;
+	right: 5%;
+		}
+	}				
+
+.content2 {
+	position: absolute;
+	top: 30%;
+	right: 5%;
+	width: 50%;
+	p {
+		font-weight: 100;
+	}
+	}
+
+@media all and (max-width: 940px) {
+	.content2 {
+	top: 10%;
+	right: 5%;
+		}
+	}
+
+@media all and (max-width: 767px) {
+	.content2 {
+	top: 0;
+	p {
+	font-size: 1.4rem;	
+		}
+	}
+	}
+
+@media all and (max-width: 480px) {
+	.content2 {
+	top: 15%;
+		}
+	}
+
+@media all and (max-width: 320px) {
+	.content2 {
+	top: 0;
+	font-size: 1rem;
+	width: 54%;
+		}
+	}						
+
+h3 {
+	color: white;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+h3::after {
+   content: " ";
+   display: block;
+   background: white;
+   height: 1.5px;
+   width: 25%;
+   margin-top: 8px;
+}
+
+// HOT PRODUCTS SECTION
+
+.gallery2 {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+    flex-direction: row;
+	.hotProduct {
+	margin: 10px;
+	flex: 1 0 auto;
+	width: calc(33.33% - 20px);
+	position: relative;
+	.names2 {
+		position: absolute;
+		align-self: flex-start; 
+		bottom: 15%;
+		line-height: 0;
+		text-transform: uppercase;
+		width: 100%; 
+		padding-left: 10px;		
+	}
+	}
+}
+
+@media all and (max-width: 767px) {
+	.gallery2 .hotProduct {
+	width: calc(50% - 20px);	
+	flex: 1 0 33%;
+	}
+	}	
+
+
+@media all and (max-width: 480px) {
+	.gallery2 .names2 {
+	top: 65%;
+	}	
+}
+
+.sale {
+	background: #FFD740;
+	border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	text-align: center;
+	text-transform: uppercase;
+	position: absolute;
+	right: 15px;
+	top: 30px;
+}
+
+@media all and (max-width: 480px) {
+	.sale {
+	height: 50px;
+	width: 50px;
+	top: 20px;
+		}
+	}		
+
+// NEWSLETTER BANNER	
+
+.newsletter {
+	background: url(assets/newsletter-banner.jpg) center no-repeat;
+	height: 230px;
+	margin-top: 4%;
+	input[type="text"] {
+    background: transparent;
+    border: 0;
+}
+}
+
+@media all and (max-width: 767px) {
+	.newsletter {
+	background-position: left; 
+		}
+	}	
+
+.newsletter {
+	position: relative;
+	h3 {
+		font-size: 3rem;
+	}
+}
+
+@media all and (max-width: 767px) {
+	.newsletter h3 {
+	font-size: 2rem;
+		}
+	}
+
+.newsletter form {
+	position: absolute;
+	top: 30px;
+	left: 200px;
+	width: 55%;
+}
+
+@media all and (max-width: 767px) {
+	.newsletter form {
+	top: 5%;
+	left: 10%;
+	width: 80%;
+		}
+	}
+
+@media all and (max-width: 320px) {
+	.newsletter form {
+	width: 90%;
+	font-size: 1.25rem;
+		}
+	}		
+
+.newsletter .submit {
+	@include button(red);
+	border: 0;
+	width: 25%;
+	margin-left: 45px;
+}
+
+.newsletter input[type="text"] {
+    background: transparent;
+    border: 0;
+    border-bottom: 1.5px solid white;
+    width: 28%;
+    margin: 10px;
+}
+
+
+// Feautred product section
+
+.featured {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	img {
+	max-width: 75%;
+}
+}
+
+@media all and (max-width: 767px) {
+	.featured {
+	flex-direction: column;
+	align-items: center;
+	img {
+		margin-left: 15%;
+		}
+	}
+	}
+
+article {
+	width: 33%;
+	color: grey;
+	p {
+	color: grey;
+	}
+}
+
+@media all and (max-width: 767px) {
+	article {
+	padding-bottom: 10%;
+	width: 60%;
+		}
+	}
+
+.featured h4 {
+	color: #444444;
+	font-weight: 500; 
+	letter-spacing: 0.1rem;
+}
+
+span.discount {
+	text-decoration: line-through;
+	background: none;
+	color: grey;
+	padding-right: 2%;
+}
+
+span.price {
+	color: black;
+}
+
+.colors {
+	display: flex;
+	p {
+		margin-right: 30px;
+	}
+}
+
+.colors .red, .yellow, .green {
+	background: red;
+	margin: 17px 5px;
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+}
+
+.yellow {
+	background: #FFF737;
+}
+
+.green {
+	background: #04E576;
+}
+
+.featured button {
+  @include button(red);
+  padding: 5%;
+}
+
+@media all and (max-width: 767px) {
+	.featured button {
+	margin-left: 35%;
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.featured button {
+	margin-left: 25%;
+		}
+	}		
+
+// LOCATOR SECTION
+
+
+.contact {
+	position: relative;
+ img {
+	max-width: 100%;
+}
+}
+
+@media all and (max-width: 320px) {
+	.contact img {
+	display: none;
+		}
+	}
+
+.locator {
+	background: rgba(252,22,208,0.8);
+	width: 28%;
+	position: absolute;
+	top: 15%;
+	right: 15%;
+	h2 {
+		color: white;
+		font-weight: 400;
+	}
+	}
+
+@media all and (max-width: 940px) {
+	.locator {
+	width: 50%;
+	font-size: 1rem;
+	line-height: 1;
+	top: 5%;
+		h4 {
+			padding: 0;
+			margin: 0;
+		}
+		}
+	}
+
+@media all and (max-width: 767px) {
+	.locator {
+	width: 55%;
+	font-size: 0.7rem;
+	right: 8%;
+	top: 2.5%;
+	width: 40%;
+
+	}	
+}
+
+@media all and (max-width: 480px) {
+	.locator {
+	top: 8%;
+		}
+	}
+
+@media all and (max-width: 320px) {
+	.locator {
+	display: none;
+		}
+	}		
+
+.locator h2::after {
+	background: white;
+	width: 25%;
+	height: 1px;
+}		
+
+address {
+	font-style: normal;
+	line-height: 2;
+	font-size: 1rem;
+	color: white;
+
+	h4 {
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 1.5rem;
+	}
+	}
+
+@media all and (max-width: 480px) {
+	.locator address {
+	line-height: 1.5;
+	font-size: 1rem;
+		}
+	}	
+
+.hours {
+	color: white;
+	line-height: 2;
+	font-size: 1rem;
+	padding-bottom: 4%;
+	h4 {
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.5rem;
+	}
+	}
+
+.hours ul {
+	margin: 0;
+	padding: 0;
+}
+
+@media all and (max-width: 480px) {
+	.hours {
+	display: none;
+		}
+	}			
+
+.locatorContainer {	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+}
+
+// FEATURED PRODUCTS AND PASTELS SECTION
+
+.pastelGallery {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding-bottom: 5%;
+	flex-wrap: wrap;
+}
+
+.top {
+	display: flex;
+	justify-content: space-between; 
+	p {
+		color: black;
+	}
+}
+
+.topleft span {
+	font-size: 1.25rem;	
+	}
+
+.topleft h5 {
+	margin-bottom: 0;
+}
+
+.price p {
+	margin-top: 100%;
+}	
+
+.end {
+	padding-top: 10%;
+	display: flex;
+	justify-content: space-between; 
+}
+
+.pastelProduct {
+	box-shadow: 0 1px 5px #888888;
+	padding: 0.5%;
+	padding-top: 2%;
+}
+
+@media all and (max-width: 940px) {
+	.pastelProduct {
+	width: calc(50% - 50px);
+	margin: 25px;
+		}
+	}
+
+@media all and (max-width: 940px) {
+	.pastelProduct:last-child {
+	display: none;
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.pastelProduct {
+	width: calc(50% - 5px);
+	margin: 2.5px;
+		}
+	}			
+
+img.featuredPhoto {
+	width: 100%;
+}	
+
+// PERK SECTION
+
+.perks {
+	background: $blue;
+	display: flex;
+	flex-direction: row; 
+	flex-wrap: nowrap;
+	padding: 2%;
+}
+
+@media all and (max-width: 767px) {
+	.perks {
+	padding: 0;
+		}
+	}
+
+@media all and (max-width: 767px) {
+	.perks {
+	flex-direction: column;
+	align-items: center;
+		}
+	}
+
+.perk {
+	text-align: center;
+	line-height: 2;
+	h6, p {
+	color: white;
+}
+}
+
+@media all and (max-width: 767px) {
+	.perk {
+	line-height: 1.5;
+	margin: 3%; 
+	padding-bottom: 0;
+		}
+	}
+
+h6 {
+	font-size: 2rem;
+	font-weight: 400;
+	margin: 1rem;
+}
+
+// REVIEW SECTION
+
+.critics {
+	display: flex;
+	justify-content: space-between; 
+	flex-wrap: wrap;
+	line-height: 1.6;
+	font-size: 2.1rem;
+	.author {
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		font-weight: 500;
+		margin-bottom: 0;
+	}
+	}
+
+@media all and (max-width: 480px) {
+	.critics {
+	display: none;
+		}
+	}
+
+.review {
+	color: white;
+	padding: 1%;
+	text-align: center;
+	flex: 1 0 32%;
+	margin: 0.5%;
+}
+
+.title {
+	margin-top: 0;
+	font-size: 1.5rem;
+
+}
+
+.r1 {
+	background: #C0CA33;
+}
+
+.r2 {
+	background: #FBC02C;
+}
+
+.r3 {
+	background: #E45102;
+}
+
+.r4 {
+	background: #FF339A;
+}
+
+.r5 {
+	background: #AA46BC;
+}
+
+.r6 {
+	background: #7E56C2;
+}
+
+.c1 {
+	background: url(assets/person1.jpg) center;
+}
+
+.c2 {
+	background: url(assets/person6.jpg);
+}
+
+.c3 {
+	background: url(assets/person2.jpg);
+}
+
+.c4 {
+	background: url(assets/person5.jpg);
+}
+
+.c5 {
+	background: url(assets/person3.jpg);
+}
+
+.c6 {
+	background: url(assets/person4.jpg);
+}
+
+.circle {
+	border: 5px solid rgba(0,0,0,0.5);
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+cite::after {
+   content: " ";
+   display: block;
+   background: rgba(0,0,0,0.5);
+   height: 1.5px;
+   width: 12%;
+   margin: 0 auto;
+   margin-top: 8px;
+}
+
+// DISCOUNT BANNER SECTION
+
+.discount {
+	background: url(assets/discount-banner.png) no-repeat;
+	height: 230px;
+	margin-top: 4%;
+	img {
+	width: 100%;
+}
+}
+
+.discountform {
+	text-align: center;
+	position: relative;
+}
+
+.discount h3 {
+	font-size: 2.5rem;
+}
+
+@media all and (max-width: 767px) {
+	.discount h3 {
+	font-size: 2rem;
+	}
+}
+
+@media all and (max-width: 480px) {
+	.discount h3 {
+	font-size: 1.5rem;
+		}
+	}
+
+.discount h3::after {
+	margin: 0 auto;
+	width: 25%;
+}
+
+.discount form {
+	position: absolute;
+	top: 70px;
+	left: 450px;
+}
+
+@media all and (max-width: 767px) {
+	.discount form {
+	top: 10%;	
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.discount form {
+	left:-2%;
+		}
+	}	
+
+.discount .submit {
+	@include button( #FFD740);
+}
+
+@media all and (max-width: 767px) {
+	.discount .submit {
+	margin-top: 5%;	
+	padding: 2%;
+		}
+	}
+
+.discount input[type="text"] {
+    background: transparent;
+    border: 0;
+    border-bottom: 1.5px solid white;
+    width: 55%;
+    margin-right: 10px;
+}
+
+@media all and (max-width: 480px) {
+	.discount input[type="text"]{
+	 font-size: 1.5rem;
+		}
+	}
+
+::-webkit-input-placeholder {
+   color: white;
+}
+
+// LATEST NEWS SECTION
+
+.news1 {
+	background: url(assets/glasses.jpg);
+	width: 30%;
+	height: 280px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+@media all and (max-width: 480px) {
+	.news1 {
+	 width: 70%;
+	 margin: 2% auto;
+		}
+	}
+
+
+.newstext {
+	background: rgba(0,0,0,0.4);
+	padding-left: 5%;
+	color: white;
+	p {
+	line-height: 1px;
+	}
+}
+
+.news .read {
+	text-transform: uppercase;
+	padding-top: 20px;
+}
+
+.news2 {
+	background: url(assets/socks.jpg) center;
+	width: 30%;
+	height: 280px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+@media all and (max-width: 480px) {
+	.news2 {
+	 width: 70%;
+	 margin: 2% auto;
+		}
+	}
+
+.news3 {
+	background: url(assets/blackshirt.jpg) center;
+	width: 30%;
+	height: 280px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+@media all and (max-width: 480px) {
+	.news3 {
+	 width: 70%;
+	 margin: 2% auto;
+		}
+	}
+
+.news {
+	display: flex;
+	flex-direction: row; 
+	justify-content: space-between;
+	h6 {
+		margin-left: 0;
+}	
+}
+
+@media all and (max-width: 480px) {
+	.news {
+	 flex-direction: column;
+		}
+	}
+
+.cart {
+	display: flex;
+	justify-content: flex-end;
+}
+
+// FOOTER!
+
+footer {
+	background: $blue;
+	margin-top: 4vh;
+}
+
+.footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	line-height: 1.5;
+	h6 {
+		margin-left: 0;
+		font-weight: 700;
+	}
+	}
+
+address {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 1.5;
+	}
+
+.list {
+	display: flex;
+	flex-direction: row; 
+    justify-content: space-between; 
+}
+
+@media all and (max-width: 320px) {
+	.list {
+	justify-content: center;
+	font-size: 1rem;
+	margin: 0 auto;
+		}
+	}
+
+.list li {
+	flex: 1 0 50%;
+	padding: 10% 0;
+	font-size: 1.6rem;
+}
+
+@media all and (max-width: 320px) {
+	.list {
+	font-size: 1rem;
+	padding: 0;
+	margin: 0 auto;
+	flex-direction: column;
+		}
+	}
+
+@media all and (max-width: 480px) {
+	.footer ul, .footer address {
+	 display: none;
+		}
+	}
+
